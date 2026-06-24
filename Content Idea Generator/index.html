@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Content Idea Generator</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">💡</div>
+        <div>
+          <h1 class="brand-title">Content Idea Generator</h1>
+          <p class="brand-tagline">Pick a niche. Choose format & platform. Generate fresh ideas instantly.</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle-text">Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+    <div class="container grid">
+      <section class="card generator-card" aria-label="Generator">
+        <div class="card-header">
+          <h2>
+            <span class="title-accent" aria-hidden="true">⚡</span>
+            Content Idea Generator
+          </h2>
+          <p class="muted">Pick a niche + format + platform. Then generate high-quality ideas instantly.</p>
+        </div>
+
+        <form id="generatorForm" class="generator-form" novalidate>
+          <div class="form-row">
+            <label class="field">
+              <span class="field-label">Search category</span>
+              <input id="categorySearch" class="input" type="text" placeholder="Type to search..." autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span class="field-label">Category</span>
+              <select id="categorySelect" class="select" required></select>
+            </label>
+          </div>
+
+          <div class="form-row two">
+            <label class="field">
+              <span class="field-label">Content type</span>
+              <select id="contentTypeSelect" class="select" required></select>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Platform</span>
+              <select id="platformSelect" class="select" required></select>
+            </label>
+          </div>
+
+          <div class="form-row two">
+            <label class="field">
+              <span class="field-label">How many ideas</span>
+              <select id="quantitySelect" class="select" required>
+                <option value="3">3 Ideas</option>
+                <option value="5" selected>5 Ideas</option>
+                <option value="8">8 Ideas</option>
+                <option value="10">10 Ideas</option>
+              </select>
+            </label>
+
+            <div class="field">
+              <span class="field-label">Quick actions</span>
+              <div class="actions-row">
+                <button id="generateBtn" class="btn primary" type="submit">
+                  <span class="btn-icon" aria-hidden="true">✨</span>
+                  Generate
+                </button>
+                <button id="clearFavoritesBtn" class="btn danger" type="button" title="Clear favorites">
+                  Clear ❤️
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="loading" id="loading" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <div class="loading-text">Generating ideas...</div>
+        </div>
+
+        <div id="emptyState" class="empty" hidden>
+          <div class="empty-emoji" aria-hidden="true">🧠</div>
+          <div>
+            <h3>Ready when you are</h3>
+            <p>Select a category and press <b>Generate</b>.</p>
+          </div>
+        </div>
+
+        <div id="results" class="results" aria-live="polite"></div>
+      </section>
+
+      <aside class="card favorites-card" aria-label="Favorites">
+        <div class="card-header">
+          <h2>Your Favorites</h2>
+          <p class="muted">Saved ideas are stored on this device.</p>
+        </div>
+
+        <div class="favorites-toolbar">
+          <div class="pill" id="favoritesCount">0 saved</div>
+        </div>
+
+        <div id="favoritesEmpty" class="empty small" hidden>
+          <div class="empty-emoji" aria-hidden="true">❤️</div>
+          <div>
+            <h3>No favorites yet</h3>
+            <p>Click the ❤️ on any idea to save it.</p>
+          </div>
+        </div>
+
+        <div id="favoritesList" class="favorites-list"></div>
+      </aside>
+    </div>
+
+    <div class="container">
+      <section class="how-it-works" aria-label="How it works">
+        <h2>How it works</h2>
+        <ol>
+          <li>Search & select a category</li>
+          <li>Choose content type and platform</li>
+          <li>Generate ideas, then copy or favorite</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Content Idea Generator</div>
+      <div class="muted">Built with HTML • CSS • Vanilla JavaScript</div>
+    </div>
+  </footer>
+
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-relevant="additions"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
